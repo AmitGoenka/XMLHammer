@@ -74,6 +74,7 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 * Stronger input parameter validations along with named parameters.
 * Relaxation on the input argument rules.
 * Support for customizing the output file names.
+* Fix existing unit tests and add more of them for better coverage.
 
 ## Wish List:
 
