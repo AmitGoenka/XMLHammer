@@ -5,7 +5,8 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 ## Examples:
 
 ### Input:
-``<Company>
+```
+<Company>
 	<Employees>
 		<Employee>
 			<FirstName>George</FirstName>
@@ -16,26 +17,31 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 			<LastName>Funke</LastName>
 		</Employee>
 	</Employees>
-</Company>``
+</Company>
+```
 
-### Ouput:
-``<Company>
+### Output:
+```
+<Company>
 	<Employees>
 		<Employee>
 			<FirstName>George</FirstName>
 			<LastName>Michael</LastName>
 		</Employee>
 	</Employees>
-</Company>``
+</Company>
+```
 
-``<Company>
+```
+<Company>
 	<Employees>
 		<Employee>
 			<FirstName>Maeby</FirstName>
             <LastName>Funke</LastName>
 		</Employee>
 	</Employees>
-</Company>`
+</Company>
+```
 
 ## Parameters
 
