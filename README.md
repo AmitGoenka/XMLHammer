@@ -69,7 +69,9 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 
 ## TODO List:
 
-* Need to Enhance Support for directory name to link missing end slashes "/".
+* Change System Error print statements to Loggers.
+* Handle exceptions instead throws clauses.
+* Stronger input parameter validations along with named parameters.
 * Relaxation on the input argument rules.
 * Support for customizing the output file names.
 
