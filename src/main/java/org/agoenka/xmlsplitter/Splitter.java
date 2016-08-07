@@ -40,6 +40,7 @@ class Splitter {
         Document filler = load(srcPath);
         NodeList fillerNodes = findChildren(filler, parentElementName);
 
+        LOGGER.info("Split Operation Started: Hang in there!");
         fill(container, pivot, fillerNodes);
         LOGGER.info("Total number of node elements filled: " + Counter.report());
     }

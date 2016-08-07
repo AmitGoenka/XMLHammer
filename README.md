@@ -54,6 +54,13 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 * Output Directory: Optional. The directory for the Output Files. this is considered to be relative to the source Directory.
                     If this parameter is absent, application sets the output directory to current directory.
 
+#### Examples:
+
+* java -jar xmlsplitter-1.0-SNAPSHOT.jar Company.xml Employees "" In/ Out/
+* java -jar xmlsplitter-1.0-SNAPSHOT.jar Company.xml Employees MyHomeDirectory In/ Out/
+* java -jar xmlsplitter-1.0-SNAPSHOT.jar Company.xml
+
+
 ## Things to Remember:
 
 * Parameters must be passed in order as mentioned above.
