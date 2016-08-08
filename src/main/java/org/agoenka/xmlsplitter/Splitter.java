@@ -35,7 +35,7 @@ class Splitter {
     static void split (String srcName, String parentElementName) throws IOException, SAXException, ParserConfigurationException, TransformerException {
         String srcPath = getSourcePath(srcName);
         Document container = load(srcPath);
-        Node pivot = peel(container, parentElementName);
+        Node pivot = pluck(container, parentElementName);
         Document filler = load(srcPath);
         NodeList fillerNodes = findChildren(filler, parentElementName);
 

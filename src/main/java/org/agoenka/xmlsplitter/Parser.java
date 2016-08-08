@@ -39,7 +39,7 @@ class Parser {
         return node.getNodeType() == Node.ELEMENT_NODE;
     }
 
-    static Node peel (Document document, String pivotElementName) {
+    static Node pluck(Document document, String pivotElementName) {
         return removeChildren(document, pivotElementName);
     }
 
