@@ -14,7 +14,7 @@ public class App {
 
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
 
-    public static void main (String... args) throws SAXException, TransformerException, ParserConfigurationException, IOException {
+    public static void main (String... args) throws Exception {
         validateArgs(args);
 
         String fileName = getArgs(args, 0);

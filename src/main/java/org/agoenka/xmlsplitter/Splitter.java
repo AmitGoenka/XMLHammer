@@ -71,7 +71,7 @@ class Splitter {
     }
 
     private static String getFileName(Node node) {
-        return OUT_DIR + node.getNodeName() + "-" + Counter::get + ".xml";
+        return OUT_DIR + node::getNodeName + "-" + Counter::get + ".xml";
     }
 
     static void setSrcDir (String srcDir) {
