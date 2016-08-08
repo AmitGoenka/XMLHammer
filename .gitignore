@@ -3,6 +3,5 @@
 *.iml
 /target/
 out
-gen
 
 # Java template

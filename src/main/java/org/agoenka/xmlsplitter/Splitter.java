@@ -8,7 +8,6 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.logging.Logger;
 
 import static org.agoenka.xmlsplitter.Parser.*;
@@ -42,7 +41,7 @@ class Splitter {
 
         LOGGER.info("Split Operation Started: Hang in there!");
         fill(container, pivot, fillerNodes);
-        LOGGER.info("Total number of node elements filled: " + Counter.report());
+        LOGGER.info("Total number of node elements filled: " + Counter::report);
     }
 
     private static void fill (Document container, Node pivot, NodeList fillers) throws TransformerException, IOException {
@@ -72,7 +71,7 @@ class Splitter {
     }
 
     private static String getFileName(Node node) {
-        return OUT_DIR + node.getNodeName() + "-" + Counter.get() + ".xml";
+        return OUT_DIR + node.getNodeName() + "-" + Counter::get + ".xml";
     }
 
     static void setSrcDir (String srcDir) {
@@ -92,7 +91,7 @@ class Splitter {
     }
 
     private static String lintDirectoryName (String dir) {
-        return (missingTrailingSlash(dir)) ? dir += "/" : dir;
+        return missingTrailingSlash(dir) ? dir + "/" : dir;
     }
 
     private static boolean missingTrailingSlash (String dir) {

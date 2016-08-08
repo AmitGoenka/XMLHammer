@@ -69,12 +69,11 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 
 ## TODO List:
 
-* Change System Error print statements to Loggers.
 * Handle exceptions instead throws clauses.
 * Stronger input parameter validations along with named parameters.
 * Relaxation on the input argument rules.
 * Support for customizing the output file names.
-* Fix existing unit tests and add more of them for better coverage.
+* Enrich unit tests add have better coverage.
 
 ## Wish List:
 

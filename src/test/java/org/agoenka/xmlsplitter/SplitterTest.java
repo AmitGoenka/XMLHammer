@@ -8,7 +8,7 @@ import org.junit.Test;
 public class SplitterTest {
 
     @Test
-    public void getDocument() throws Exception {
+    public void splitTest() throws Exception {
         Splitter.setSrcDir("src/test/resources/examples/");
         Splitter.setInputDir("in/", true);
         Splitter.setOutputDir("out/", true);
