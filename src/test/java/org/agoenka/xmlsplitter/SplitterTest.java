@@ -9,9 +9,9 @@ public class SplitterTest {
 
     @Test
     public void splitTest() throws Exception {
-        Splitter.setSrcDir("src/test/resources/examples/");
-        Splitter.setInputDir("in/", true);
-        Splitter.setOutputDir("out/", true);
+        FileManager.setSrcDir("src/test/resources/examples/");
+        FileManager.setInputDir("in/", true);
+        FileManager.setOutputDir("out/", true);
         String fileName = "Company.xml";
         String parentElementName = "Employees";
         Splitter.split(fileName, parentElementName);

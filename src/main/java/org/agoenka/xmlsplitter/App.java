@@ -1,10 +1,6 @@
 package org.agoenka.xmlsplitter;
 
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
+import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 /**
@@ -26,9 +22,9 @@ public class App {
         validateArg(fileName, "File Name");
         validateArg(pivotElementName, "Pivot Element Name");
 
-        Splitter.setSrcDir(srcDir);
-        Splitter.setInputDir(inDir, true);
-        Splitter.setOutputDir(outDir, true);
+        FileManager.setSrcDir(srcDir);
+        FileManager.setInputDir(inDir, true);
+        FileManager.setOutputDir(outDir, true);
         Splitter.split(fileName, pivotElementName);
     }
 
@@ -38,8 +34,8 @@ public class App {
 
     private static void validateArgs(String[] args) {
         boolean valid = false;
-        if (args.length < 2) LOGGER.severe("Error: missing arguments: xml file name and pivot element name required.");
-        else if (args.length > 5) LOGGER.severe("Error: too many arguments: only five parameters are supported.");
+        if (validate(args, p -> p.length < 2)) LOGGER.severe("Error: missing arguments: xml file name and pivot element name required.");
+        else if (validate(args, p -> p.length > 5)) LOGGER.severe("Error: too many arguments: only five parameters are supported.");
         else valid = true;
         if (!valid) onError();
     }
@@ -53,6 +49,10 @@ public class App {
 
     private static void onError() {
         System.exit(0);
+    }
+
+    private static <X> boolean validate (X type, Predicate<X> tester) {
+        return tester.test(type);
     }
 
 }
