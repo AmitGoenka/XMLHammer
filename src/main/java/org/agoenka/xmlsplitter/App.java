@@ -1,7 +1,12 @@
 package org.agoenka.xmlsplitter;
 
+import org.agoenka.xmlsplitter.service.FileManager;
+import org.agoenka.xmlsplitter.service.Splitter;
+
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+
+import static org.agoenka.xmlsplitter.util.Errors.*;
 
 /**
  * Authored by agoenka on 8/6/2016.
@@ -34,15 +39,15 @@ public class App {
 
     private static void validateArgs(String[] args) {
         boolean valid = false;
-        if (validate(args, p -> p.length < 2)) LOGGER.severe("Error: missing arguments: xml file name and pivot element name required.");
-        else if (validate(args, p -> p.length > 5)) LOGGER.severe("Error: too many arguments: only five parameters are supported.");
+        if (validate(args, p -> p.length < 2)) LOGGER.severe(ARGS_MISSING_MANDATORY.get());
+        else if (validate(args, p -> p.length > 5)) LOGGER.severe(ARGS_TOO_MANY.get());
         else valid = true;
         if (!valid) onError();
     }
 
     private static void validateArg(String arg, String parameterName) {
         boolean valid = false;
-        if (arg.equals("")) LOGGER.severe("Error: empty parameter: '" + parameterName + "' can not be empty.");
+        if (arg.equals("")) LOGGER.severe(ARGS_EMPTY.get(parameterName));
         else valid = true;
         if (!valid) onError();
     }

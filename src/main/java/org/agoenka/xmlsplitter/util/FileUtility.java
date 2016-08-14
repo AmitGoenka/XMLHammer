@@ -1,9 +1,9 @@
-package org.agoenka.xmlsplitter;
+package org.agoenka.xmlsplitter.util;
 
 /**
  * Authored by agoenka on 8/13/2016.
  */
-interface FileUtility {
+public interface FileUtility {
 
     static boolean hasXMLExtension (String name) {
         return name != null && (name.endsWith(".xml") || name.endsWith(".XML"));

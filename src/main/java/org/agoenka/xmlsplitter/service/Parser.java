@@ -1,4 +1,4 @@
-package org.agoenka.xmlsplitter;
+package org.agoenka.xmlsplitter.service;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;

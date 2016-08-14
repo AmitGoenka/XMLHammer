@@ -1,4 +1,4 @@
-package org.agoenka.xmlsplitter;
+package org.agoenka.xmlsplitter.schema;
 
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;

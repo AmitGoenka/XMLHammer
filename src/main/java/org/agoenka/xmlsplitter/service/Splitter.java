@@ -1,4 +1,4 @@
-package org.agoenka.xmlsplitter;
+package org.agoenka.xmlsplitter.service;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -13,14 +13,14 @@ import java.time.LocalTime;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
-import static org.agoenka.xmlsplitter.FileManager.getFileName;
-import static org.agoenka.xmlsplitter.FileManager.getSourcePath;
-import static org.agoenka.xmlsplitter.Parser.*;
+import static org.agoenka.xmlsplitter.service.FileManager.getFileName;
+import static org.agoenka.xmlsplitter.service.FileManager.getSourcePath;
+import static org.agoenka.xmlsplitter.service.Parser.*;
 
 /**
  * Authored by agoenka on 8/6/2016.
  */
-class Splitter {
+public class Splitter {
 
     private static final Logger LOGGER = Logger.getLogger(Splitter.class.getName());
 
@@ -34,7 +34,7 @@ class Splitter {
         }
     }
 
-    static void split (String srcName, String parentElementName) throws IOException, SAXException, ParserConfigurationException, TransformerException {
+    public static void split (String srcName, String parentElementName) throws IOException, SAXException, ParserConfigurationException, TransformerException {
         String srcPath = getSourcePath(srcName);
         Document container = load(srcPath);
         Node pivot = pluck(container, parentElementName);
