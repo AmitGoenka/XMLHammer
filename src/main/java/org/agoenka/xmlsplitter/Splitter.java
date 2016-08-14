@@ -8,6 +8,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalTime;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
@@ -40,10 +41,13 @@ class Splitter {
         Document filler = load(srcPath);
         NodeList fillerNodes = findChildren(filler, parentElementName);
 
-        LOGGER.info("Split operation started: Hang in there! Current local time is: " + LocalTime.now());
+        LocalTime startTime = LocalTime.now();
+        LOGGER.info("Split operation started: Hang in there! Current local time is: " + startTime);
         fill(container, pivot, fillerNodes);
-        LOGGER.info("Split operation finished. Current local time is: " + LocalTime.now());
-        LOGGER.info("Total number of node elements filled: " + Counter::report);
+        LocalTime endTime = LocalTime.now();
+        LOGGER.info("Split operation finished. Current local time is: " + endTime);
+        LOGGER.info("Total time taken: " + Duration.between(startTime, endTime).toMillis() + " milliseconds");
+        LOGGER.info("Total number of node elements filled: " + Counter.report());
     }
 
     private static void fill (Document container, Node pivot, NodeList fillers) throws TransformerException, IOException {

@@ -2,6 +2,9 @@ package org.agoenka.xmlsplitter;
 
 import org.junit.Test;
 
+import java.time.Duration;
+import java.time.LocalTime;
+
 /**
  * Authored by agoenka on 8/6/2016.
  */
@@ -15,6 +18,14 @@ public class SplitterTest {
         String fileName = "Company.xml";
         String parentElementName = "Employees";
         Splitter.split(fileName, parentElementName);
+    }
+
+    @Test
+    public void time() {
+        LocalTime timeStart = LocalTime.now();
+        LocalTime timeEnd = LocalTime.now();
+        Long millis = Duration.between(timeStart, timeEnd).toMillis();
+        System.out.println(millis);
     }
 
 }
