@@ -1,4 +1,4 @@
-package org.agoenka.xmlsplitter;
+package org.agoenka.xmlhammer;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
-import static org.agoenka.xmlsplitter.util.Errors.ARGS_EMPTY;
+import static org.agoenka.xmlhammer.util.Errors.ARGS_EMPTY;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 

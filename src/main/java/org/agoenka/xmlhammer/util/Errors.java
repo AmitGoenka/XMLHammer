@@ -1,4 +1,4 @@
-package org.agoenka.xmlsplitter.util;
+package org.agoenka.xmlhammer.util;
 
 import java.util.Formatter;
 

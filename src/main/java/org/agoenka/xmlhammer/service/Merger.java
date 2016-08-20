@@ -1,4 +1,4 @@
-package org.agoenka.xmlsplitter.service;
+package org.agoenka.xmlhammer.service;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.agoenka.xmlsplitter.service.FileManager.*;
-import static org.agoenka.xmlsplitter.service.Parser.findNode;
-import static org.agoenka.xmlsplitter.service.Parser.load;
-import static org.agoenka.xmlsplitter.util.CommonUtils.isNotEmpty;
-import static org.agoenka.xmlsplitter.util.FileUtils.fileCount;
+import static org.agoenka.xmlhammer.service.FileManager.*;
+import static org.agoenka.xmlhammer.service.Parser.findNode;
+import static org.agoenka.xmlhammer.service.Parser.load;
+import static org.agoenka.xmlhammer.util.CommonUtils.isNotEmpty;
+import static org.agoenka.xmlhammer.util.FileUtils.fileCount;
 
 /**
  * Authored by agoenka on 8/10/2016.

@@ -1,4 +1,4 @@
-package org.agoenka.xmlsplitter.service;
+package org.agoenka.xmlhammer.service;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -11,9 +11,9 @@ import java.time.LocalTime;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
-import static org.agoenka.xmlsplitter.service.FileManager.getOutFilePath;
-import static org.agoenka.xmlsplitter.service.FileManager.getSourcePath;
-import static org.agoenka.xmlsplitter.service.Parser.*;
+import static org.agoenka.xmlhammer.service.FileManager.getOutFilePath;
+import static org.agoenka.xmlhammer.service.FileManager.getSourcePath;
+import static org.agoenka.xmlhammer.service.Parser.*;
 
 /**
  * Authored by agoenka on 8/6/2016.

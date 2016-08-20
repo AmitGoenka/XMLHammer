@@ -1,4 +1,4 @@
-package org.agoenka.xmlsplitter.functions;
+package org.agoenka.xmlhammer.functions;
 
 import java.util.function.Predicate;
 

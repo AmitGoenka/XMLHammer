@@ -1,7 +1,7 @@
-package org.agoenka.xmlsplitter;
+package org.agoenka.xmlhammer;
 
-import org.agoenka.xmlsplitter.service.Merger;
-import org.agoenka.xmlsplitter.service.Splitter;
+import org.agoenka.xmlhammer.service.Merger;
+import org.agoenka.xmlhammer.service.Splitter;
 import org.junit.Test;
 
 /**

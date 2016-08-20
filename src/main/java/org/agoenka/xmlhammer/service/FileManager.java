@@ -1,9 +1,9 @@
-package org.agoenka.xmlsplitter.service;
+package org.agoenka.xmlhammer.service;
 
-import static org.agoenka.xmlsplitter.util.Constants.FILENAME_SEPARATOR;
-import static org.agoenka.xmlsplitter.util.Constants.FILE_EXTENSION_DEFAULT;
-import static org.agoenka.xmlsplitter.util.FileUtils.hasXMLExtension;
-import static org.agoenka.xmlsplitter.util.FileUtils.lintDirectoryName;
+import static org.agoenka.xmlhammer.util.Constants.FILENAME_SEPARATOR;
+import static org.agoenka.xmlhammer.util.Constants.FILE_EXTENSION_DEFAULT;
+import static org.agoenka.xmlhammer.util.FileUtils.hasXMLExtension;
+import static org.agoenka.xmlhammer.util.FileUtils.lintDirectoryName;
 
 /**
  * Authored by agoenka on 8/10/2016.

@@ -1,8 +1,8 @@
-package org.agoenka.xmlsplitter.util;
+package org.agoenka.xmlhammer.util;
 
 import java.io.File;
 
-import static org.agoenka.xmlsplitter.util.CommonUtils.isNotEmpty;
+import static org.agoenka.xmlhammer.util.CommonUtils.isNotEmpty;
 
 /**
  * Authored by agoenka on 8/13/2016.

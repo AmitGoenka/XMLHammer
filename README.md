@@ -1,4 +1,4 @@
-# XML Splitter Library
+# XML Hammer Library
 
 _This library splits source XML file into multiple XML files pivoting on a particular node in the source XML._
 
@@ -56,9 +56,9 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 
 #### Examples:
 
-* java -jar xmlsplitter-1.0-SNAPSHOT.jar Company.xml Employees "" In/ Out/
-* java -jar xmlsplitter-1.0-SNAPSHOT.jar Company.xml Employees MyHomeDirectory In/ Out/
-* java -jar xmlsplitter-1.0-SNAPSHOT.jar Company.xml
+* java -jar xmlhammer-1.0-SNAPSHOT.jar Company.xml Employees "" In/ Out/
+* java -jar xmlhammer-1.0-SNAPSHOT.jar Company.xml Employees MyHomeDirectory In/ Out/
+* java -jar xmlhammer-1.0-SNAPSHOT.jar Company.xml
 
 
 ## Things to Remember:

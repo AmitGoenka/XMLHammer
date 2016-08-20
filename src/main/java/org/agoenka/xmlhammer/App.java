@@ -1,12 +1,12 @@
-package org.agoenka.xmlsplitter;
+package org.agoenka.xmlhammer;
 
-import org.agoenka.xmlsplitter.service.Splitter;
+import org.agoenka.xmlhammer.service.Splitter;
 
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-import static org.agoenka.xmlsplitter.functions.Validate.validate;
-import static org.agoenka.xmlsplitter.util.Errors.*;
+import static org.agoenka.xmlhammer.functions.Validate.validate;
+import static org.agoenka.xmlhammer.util.Errors.*;
 
 /**
  * Authored by agoenka on 8/6/2016.

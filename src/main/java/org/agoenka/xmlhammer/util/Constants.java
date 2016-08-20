@@ -1,4 +1,4 @@
-package org.agoenka.xmlsplitter.util;
+package org.agoenka.xmlhammer.util;
 
 /**
  * Authored by agoenka on 8/10/2016.
