@@ -3,9 +3,7 @@ package org.agoenka.xmlsplitter.service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.time.Duration;
@@ -13,7 +11,7 @@ import java.time.LocalTime;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
-import static org.agoenka.xmlsplitter.service.FileManager.getFileName;
+import static org.agoenka.xmlsplitter.service.FileManager.getOutFilePath;
 import static org.agoenka.xmlsplitter.service.FileManager.getSourcePath;
 import static org.agoenka.xmlsplitter.service.Parser.*;
 
@@ -34,7 +32,13 @@ public class Splitter {
         }
     }
 
-    public static void split (String srcName, String parentElementName) throws IOException, SAXException, ParserConfigurationException, TransformerException {
+    public static void init (String srcDir, String inDir, String outDir) {
+        FileManager.setSrcDir(srcDir);
+        FileManager.setInputDir(inDir, true);
+        FileManager.setOutputDir(outDir, true);
+    }
+
+    public static void split (String srcName, String parentElementName) throws TransformerException, IOException {
         String srcPath = getSourcePath(srcName);
         Document container = load(srcPath);
         Node pivot = pluck(container, parentElementName);
@@ -51,7 +55,7 @@ public class Splitter {
     }
 
     private static void fill (Document container, Node pivot, NodeList fillers) throws TransformerException, IOException {
-        if (hasStuff(fillers)) {
+        if (hasNodes(fillers)) {
             for (int index = 0; index < fillers.getLength(); index++) {
                 fill(container, pivot, fillers.item(index));
             }
@@ -62,7 +66,7 @@ public class Splitter {
         if (isPure(filler)) {
             Node extract = container.importNode(filler, true);
             pivot.appendChild(extract);
-            Transformer.stream(getFileName(filler.getNodeName(), Counter.get()), container);
+            Transformer.stream(getOutFilePath(filler.getNodeName(), Counter.get()), container);
             pivot.removeChild(extract);
         }
     }

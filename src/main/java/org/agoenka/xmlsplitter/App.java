@@ -1,11 +1,11 @@
 package org.agoenka.xmlsplitter;
 
-import org.agoenka.xmlsplitter.service.FileManager;
 import org.agoenka.xmlsplitter.service.Splitter;
 
-import java.util.function.Predicate;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
+import static org.agoenka.xmlsplitter.functions.Validate.validate;
 import static org.agoenka.xmlsplitter.util.Errors.*;
 
 /**
@@ -27,9 +27,7 @@ public class App {
         validateArg(fileName, "File Name");
         validateArg(pivotElementName, "Pivot Element Name");
 
-        FileManager.setSrcDir(srcDir);
-        FileManager.setInputDir(inDir, true);
-        FileManager.setOutputDir(outDir, true);
+        Splitter.init(srcDir, inDir, outDir);
         Splitter.split(fileName, pivotElementName);
     }
 
@@ -56,8 +54,10 @@ public class App {
         System.exit(0);
     }
 
-    private static <X> boolean validate (X type, Predicate<X> tester) {
-        return tester.test(type);
+    private static String getMode (String... args) {
+        boolean merge = Arrays.stream(args).anyMatch(a -> ("-m").equalsIgnoreCase(a));
+
+        return null;
     }
 
 }
