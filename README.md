@@ -1,6 +1,7 @@
 # XML Hammer Library
 
 _<B>This library supports XML split and merge operations.</B>_
+
 SPLIT operation splits a source XML file into multiple XML fragment files pivoting on a particular XML node.
 MERGE operation merges multiple XML fragmented files into a single XML file pivoting on a particular XML node.
 
@@ -50,10 +51,11 @@ Employee-2.xml
 ```
 
 ### Merge Operation:
+
 Reverse of Split operation.
 Merging Employee-1.xml and Employee.xml will yield Employees.xml with the content same as Company.xml.
 
-## Usage
+## Basic Usage
 
 * <B>`-m`</B> : Merge Mode
     * Mandatory for Merge operation.
@@ -117,6 +119,10 @@ Merging Employee-1.xml and Employee.xml will yield Employees.xml with the conten
 * java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i -p Employees -f Employee -x 5 -y 10
 * java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i -p Employees -f Employee -x 5
 * java -Xms512m -Xmx1024m -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee -x 1 -y 2
+
+## Installation:
+
+`mvn package`
 
 ## Troubleshooting:
 
