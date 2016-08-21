@@ -1,10 +1,15 @@
 # XML Hammer Library
 
-_This library splits source XML file into multiple XML files pivoting on a particular node in the source XML._
+_<B>This library supports XML split and merge operations.</B>_
+SPLIT operation splits a source XML file into multiple XML fragment files pivoting on a particular XML node.
+MERGE operation merges multiple XML fragmented files into a single XML file pivoting on a particular XML node.
 
-## Examples:
+## Examples
 
-### Input:
+### Split Operation:
+
+#### Input:
+Company.xml
 ```
 <Company>
 	<Employees>
@@ -20,7 +25,8 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 </Company>
 ```
 
-### Output:
+#### Output:
+Employee-1.xml
 ```
 <Company>
 	<Employees>
@@ -31,7 +37,7 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 	</Employees>
 </Company>
 ```
-
+Employee-2.xml
 ```
 <Company>
 	<Employees>
@@ -43,45 +49,85 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 </Company>
 ```
 
-## Parameters
+### Merge Operation:
+Reverse of Split operation.
+Merging Employee-1.xml and Employee.xml will yield Employees.xml with the content same as Company.xml.
 
-* File Name: Mandatory. The XML file that needs to be split.
-* Pivot Element Name: Mandatory. The element name from the XML file on which child elements will be split.
-* Source Directory: Optional. The directory from the file system where the xml files are present. 
-                    If this parameter is absent, application sets the source directory to current directory.
-* Input Directory:  Optional. The directory for the Input File. this is considered to be relative to the source Directory.
-                    If this parameter is absent, application sets the input directory to current directory.
-* Output Directory: Optional. The directory for the Output Files. this is considered to be relative to the source Directory.
-                    If this parameter is absent, application sets the output directory to current directory.
+## Usage
 
-#### Examples:
+* <B>`-m`</B> : Merge Mode
+    * Mandatory for Merge operation.
+    * This is a qualifier parameter and does not need a corresponding value.
+* <B>`-s`</B> : Split Mode
+    * Mandatory for Split operation.
+    * This is a qualifier parameter and does not need a corresponding value.
+* `-h` : Home Directory
+    * Optional
+    * The home directory from where input and output directories are referenced.
+    * In the absence of this parameter, current directory is used as home directory.
+* `-i` : Input Directory
+    * Optional
+    * <B>This is relative to home directory.</B>
+    * The input directory where source files are located.
+    * In the absence of this parameter, home directory is used as input directory.
+* `-o` : Output Directory (Relative to source directory)
+    * Optional
+    * <B>This is relative to home directory.</B>
+    * The output directory where output files will be written.
+    * In the absence of this parameter, home directory is used as output directory.
+* `-p` : Pivot Element Name
+    * Mandatory
+    * The element name from the XML file on which child elements will be split/merged.
+    * Example: 'Employees'.
+* `-n` : File Name
+    * Mandatory for Split operation. Does not apply to Merge operation.
+    * The input xml file that need to be split.
+* `-f` : File Name Prefix
+    * Mandatory for Merge operation. Does not apply to Split operation.
+    * This is the common prefix of the file names which needs to be merged.
+    * The name of the files that need to be merged must follow the pattern: Prefix-${index}.xml.
+    * Examples: Employee-1.xml, Employee-2.xml, Employee-3.xml.
+* `-x` : Start Index
+    * Optional. Does not apply to Split operation.
+    * Starting Index of the files that need to be merged.
+    * In the absence of this parameter, default base value 1 is used.
+    * Example: If there are four files present in input directory of the pattern (Employee-${index}.xml), 
+                a start index of 3 will apply merge operation on files starting from (Employee-3.xml) only
+                and leave the files with preceding (1, 2) indices.
+* `-y` : End Index
+    * Optional. Does not apply to Split operation.
+    * End Index of the files that need to be merged.
+    * In the absence of this parameter, max index in the input directory is used.
+    * Example: If there are four files present in input directory of the pattern (Employee-${index}.xml), 
+                an end index of 2 will apply merge operation on files up to (Employee-2.xml) only
+                and leave the files with following (3, 4) indices.
+* JVM Heap Arguments:
+    * On large operations, JVM might throw `OutOfMemoryException` due to insufficient heap space.
+    * In such situations, it is recommended to pass heap size parameters in the execution command
+    * The JVM heap arguments should be the preceding arguments in the argument list. Example (java -Xmx512m -jar ...).
+    * Example arguments: -Xms512m -Xmx1024m.
 
-* java -jar xmlhammer-1.0-SNAPSHOT.jar Company.xml Employees "" In/ Out/
-* java -jar xmlhammer-1.0-SNAPSHOT.jar Company.xml Employees MyHomeDirectory In/ Out/
-* java -jar xmlhammer-1.0-SNAPSHOT.jar Company.xml
+### Examples:
 
+* java -jar xmlhammer-1.0-SNAPSHOT.jar -s -h C:/Users/me -i In -o Out -n Company.xml -p Employees
+* java -jar xmlhammer-1.0-SNAPSHOT.jar -s -h C:/Users/me -n Company.xml -p Employees
+* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee -x 1 -y 2
+* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee
+* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i -p Employees -f Employee -x 1 -y 2
+* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i -p Employees -f Employee -x 5 -y 10
+* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i -p Employees -f Employee -x 5
+* java -Xms512m -Xmx1024m -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee -x 1 -y 2
 
-## Things to Remember:
+## Troubleshooting:
 
-* Parameters must be passed in order as mentioned above.
-* Optional Parameters follow all or none pattern, if any one is passed, all needs to be passed. Empty string is a valid value for the optional parameters.
-* SplitterTest can be used to set arguments and run the program as a test in case of any errors with the executable.
+* `SplitterTest` can be used to set arguments and run as test in case of any errors with the executable.
+* `MergerTest` can be used to set arguments and run as test in case of any errors with the executable.
 
+## Going Forward:
 
-Memory Arguments: -Xms512m -Xmx1024m
-
-## TODO List:
-
-* Handle exceptions instead throws clauses.
-* Stronger input parameter validations along with named parameters.
-* Relaxation on the input argument rules.
 * Support for customizing the output file names.
-* Enrich unit tests add have better coverage.
-
-## Wish List:
-
+* Enrich unit tests and have better coverage.
 * Schema Validation Algorithms
-* Adding a feature to merge different XML files from a directory to one composite xml.
 * Apache Camel support to move source files to archival directories and stream output files to target directory.
 * Support for different XML parsers.
 
