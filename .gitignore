@@ -5,3 +5,4 @@
 out
 
 # Java template
+/src/test/resources/examples/in/Employees.xml

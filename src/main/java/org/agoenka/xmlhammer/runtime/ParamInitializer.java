@@ -3,7 +3,7 @@ package org.agoenka.xmlhammer.runtime;
 import org.agoenka.xmlhammer.runtime.model.Parameters;
 import org.agoenka.xmlhammer.runtime.model.ParametersBuilder;
 
-import static org.agoenka.xmlhammer.runtime.ParamValidator.*;
+import static org.agoenka.xmlhammer.runtime.Validator.*;
 import static org.agoenka.xmlhammer.runtime.model.ParamMarkers.*;
 import static org.agoenka.xmlhammer.util.Functions.has;
 import static org.agoenka.xmlhammer.util.Functions.next;

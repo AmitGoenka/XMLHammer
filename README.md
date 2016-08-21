@@ -67,6 +67,9 @@ _This library splits source XML file into multiple XML files pivoting on a parti
 * Optional Parameters follow all or none pattern, if any one is passed, all needs to be passed. Empty string is a valid value for the optional parameters.
 * SplitterTest can be used to set arguments and run the program as a test in case of any errors with the executable.
 
+
+Memory Arguments: -Xms512m -Xmx1024m
+
 ## TODO List:
 
 * Handle exceptions instead throws clauses.

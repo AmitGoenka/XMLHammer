@@ -3,10 +3,14 @@ package org.agoenka.xmlhammer.service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
+import static org.agoenka.xmlhammer.runtime.Validator.validateNoFileFound;
 import static org.agoenka.xmlhammer.service.FileManager.*;
 import static org.agoenka.xmlhammer.service.Parser.findNode;
 import static org.agoenka.xmlhammer.service.Parser.load;
@@ -18,6 +22,9 @@ import static org.agoenka.xmlhammer.util.FileUtils.fileCount;
  */
 public class Merger {
 
+    private static final Logger LOGGER = Logger.getLogger(Merger.class.getName());
+    private static LocalTime startTime;
+
     public static void init (String srcDir, String inDir, String outDir) {
         FileManager.setSrcDir(srcDir);
         FileManager.setInputDir(inDir, true);
@@ -25,7 +32,9 @@ public class Merger {
     }
 
     public static void merge(String fileNamePrefix, String pivotElementName, int start, int end) throws Exception {
+        logStart();
         merge(getInDir(), getOutDirDir(), fileNamePrefix, pivotElementName, start, end);
+        logEnd();
     }
 
     public static void merge(String inDir, String outDir, String fileNamePrefix, String pivotElementName, int start, int end) throws Exception {
@@ -35,6 +44,7 @@ public class Merger {
 
     public static Document merge(String inDir, String fileNamePrefix, String pivotElementName, int start, int end) {
         int fileCount = fileCount(inDir, fileNamePrefix);
+        validateNoFileFound(fileCount);
         if (start < 0) start = 1;
         if (end <= 0) end = fileCount;
         List<Document> documents = loadDocuments(inDir, fileNamePrefix, fileCount, start, end);
@@ -64,6 +74,17 @@ public class Merger {
 
     private static boolean validate(final String fileNamePrefix, final int start, final int end) {
         return start >= 1 && end >= 1 && end >= start && isNotEmpty(fileNamePrefix);
+    }
+
+    private static void logStart() {
+        startTime = LocalTime.now();
+        LOGGER.info("Merge operation started: Hang in there! Current local time is: " + startTime);
+    }
+
+    private static void logEnd() {
+        LocalTime endTime = LocalTime.now();
+        LOGGER.info("Merge operation finished. Current local time is: " + endTime);
+        LOGGER.info("Total time taken: " + Duration.between(startTime, endTime).toMillis() + " milliseconds");
     }
 
 }

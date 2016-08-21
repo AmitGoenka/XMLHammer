@@ -9,9 +9,9 @@ import static org.agoenka.xmlhammer.util.Errors.*;
 /**
  * Authored by agoenka on 8/20/2016.
  */
-class ParamValidator {
+public class Validator {
 
-    private static final Logger LOGGER = Logger.getLogger(ParamValidator.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Validator.class.getName());
 
     static void validateNoArgs(String[] args) {
         boolean valid = false;
@@ -32,6 +32,13 @@ class ParamValidator {
         boolean valid = false;
         if (isMarker(arg)) LOGGER.severe(ARGS_MANDATORY.get(parameterName));
         else if (isEmpty(arg)) LOGGER.severe(ARGS_EMPTY.get(parameterName));
+        else valid = true;
+        if (!valid) onError();
+    }
+
+    public static void validateNoFileFound(int fileCount) {
+        boolean valid = false;
+        if (fileCount == 0) LOGGER.severe(NO_FILES_FOUND.get());
         else valid = true;
         if (!valid) onError();
     }
