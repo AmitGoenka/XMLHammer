@@ -1,7 +1,5 @@
 # XML Hammer Library
 
-![alt tag](http://images.clipartpanda.com/hammer-clipart-4TbKxXBAc.gif)
-
 _<B>This library supports XML split and merge operations.</B>_
 
 SPLIT operation splits a source XML file into multiple XML fragment files pivoting on a particular XML node.
