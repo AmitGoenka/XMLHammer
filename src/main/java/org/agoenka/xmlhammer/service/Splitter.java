@@ -23,7 +23,7 @@ public class Splitter {
     private static final Logger LOGGER = Logger.getLogger(Splitter.class.getName());
 
     private static class Counter {
-        private static AtomicInteger counter = new AtomicInteger(0);
+        private static final AtomicInteger counter = new AtomicInteger(0);
         private static int get() {
             return counter.addAndGet(1);
         }

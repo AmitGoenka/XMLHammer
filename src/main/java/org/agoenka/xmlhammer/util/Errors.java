@@ -7,11 +7,13 @@ import java.util.Formatter;
  */
 public enum Errors {
 
-    ARGS_MISSING_MANDATORY("Error: missing arguments: xml file name and pivot element name required."),
-    ARGS_TOO_MANY("Error: too many arguments: only five parameters are supported."),
-    ARGS_EMPTY("Error: empty parameter: '%s' can not be empty.");
+    ARGS_NONE("Error: no arguments: no arguments supplied."),
+    ARGS_MULTIPLE_MODES("Error: multiple modes: multiple operations are not supported on a single execution. Select only one operation mode."),
+    ARGS_MISSING_MODE("Error: missing mode or operation: operation mode is not supplied in arguments. Provide operation mode."),
+    ARGS_MANDATORY("Error: missing parameter: '%s' is mandatory for this mode of operation."),
+    ARGS_EMPTY("Error: empty parameter: '%s' cannot be empty for this mode of operation.");
 
-    private String value;
+    private final String value;
 
     public String get() {
         return value;
@@ -21,7 +23,7 @@ public enum Errors {
         return new Formatter().format(value, param).toString();
     }
 
-    private Errors (String value) {
+    Errors (String value) {
         this.value = value;
     }
 }

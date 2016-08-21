@@ -8,7 +8,7 @@ import static org.agoenka.xmlhammer.util.FileUtils.lintDirectoryName;
 /**
  * Authored by agoenka on 8/10/2016.
  */
-public class FileManager {
+class FileManager {
 
     private static String SRC_DIR = "";
     private static String IN_DIR = SRC_DIR;

@@ -35,6 +35,8 @@ public class Merger {
 
     public static Document merge(String inDir, String fileNamePrefix, String pivotElementName, int start, int end) {
         int fileCount = fileCount(inDir, fileNamePrefix);
+        if (start < 0) start = 1;
+        if (end <= 0) end = fileCount;
         List<Document> documents = loadDocuments(inDir, fileNamePrefix, fileCount, start, end);
         if (isNotEmpty(documents)) {
             final Document container = documents.get(0);

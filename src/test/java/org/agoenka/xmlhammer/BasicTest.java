@@ -1,5 +1,7 @@
 package org.agoenka.xmlhammer;
 
+import org.agoenka.xmlhammer.runtime.model.ParamMarkers;
+import org.agoenka.xmlhammer.util.Functions;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,9 +12,8 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
-import static org.agoenka.xmlhammer.util.Errors.ARGS_EMPTY;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.agoenka.xmlhammer.util.Errors.ARGS_MANDATORY;
+import static org.junit.Assert.*;
 
 /**
  * Authored by agoenka on 8/20/2016.
@@ -33,12 +34,26 @@ public class BasicTest {
     @Test
     public void testErrorString() {
         String elementName = "PivotElementName";
-        String baseString = ARGS_EMPTY.get();
-        String formattedString = ARGS_EMPTY.get(elementName);
-        LOGGER.info(ARGS_EMPTY.get());
-        LOGGER.info(ARGS_EMPTY.get("Pivot Element Name"));
+        String baseString = ARGS_MANDATORY.get();
+        String formattedString = ARGS_MANDATORY.get(elementName);
+        LOGGER.info(ARGS_MANDATORY.get());
+        LOGGER.info(ARGS_MANDATORY.get("Pivot Element Name"));
         assertNotEquals(formattedString, "");
         assertNotEquals(baseString, formattedString);
+    }
+
+    @Test
+    public void testParamMarkerFields() {
+        List<String> markerValues = Functions.getStaticFieldValues(ParamMarkers.class);
+        assertNotNull(markerValues);
+        assertTrue(markerValues.size() > 0);
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testParseInteger() {
+        String string = "-S";
+        int integer = Integer.valueOf(string);
+        LOGGER.info("" + integer);
     }
 
     @Test
