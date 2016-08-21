@@ -111,14 +111,14 @@ Merging Employee-1.xml and Employee.xml will yield Employees.xml with the conten
 
 ### Examples:
 
-* java -jar xmlhammer-1.0-SNAPSHOT.jar -s -h C:/Users/me -i In -o Out -n Company.xml -p Employees
-* java -jar xmlhammer-1.0-SNAPSHOT.jar -s -h C:/Users/me -n Company.xml -p Employees
-* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee -x 1 -y 2
-* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee
-* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i -p Employees -f Employee -x 1 -y 2
-* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i -p Employees -f Employee -x 5 -y 10
-* java -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i -p Employees -f Employee -x 5
-* java -Xms512m -Xmx1024m -jar xmlhammer-1.0-SNAPSHOT.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee -x 1 -y 2
+* java -jar xmlhammer-1.0.jar -s -h C:/Users/me -i In -o Out -n Company.xml -p Employees
+* java -jar xmlhammer-1.0.jar -s -h C:/Users/me -n Company.xml -p Employees
+* java -jar xmlhammer-1.0.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee -x 1 -y 2
+* java -jar xmlhammer-1.0.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee
+* java -jar xmlhammer-1.0.jar -m -h C:/Users/me -i -p Employees -f Employee -x 1 -y 2
+* java -jar xmlhammer-1.0.jar -m -h C:/Users/me -i -p Employees -f Employee -x 5 -y 10
+* java -jar xmlhammer-1.0.jar -m -h C:/Users/me -i -p Employees -f Employee -x 5
+* java -Xms512m -Xmx1024m -jar xmlhammer-1.0.jar -m -h C:/Users/me -i Out -o In -p Employees -f Employee -x 1 -y 2
 
 ## Installation:
 
