@@ -55,6 +55,11 @@ Employee-2.xml
 Reverse of Split operation.
 Merging Employee-1.xml and Employee.xml will yield Employees.xml with the content same as Company.xml.
 
+Merge operation supports overflow feature, where given a finite set of fragmented xml files, a composite xml file of infinite fragments can be built.
+The operation, on reaching the last file from the finite set, rolls back to the first file and continues the iteration.
+The number of files to be merged is driven by `start` and `end` parameters and there is no restriction on those values. 
+This makes it highly useful for performance testing scenarios.
+
 ## Basic Usage
 
 * <B>`-m`</B> : Merge Mode
@@ -139,4 +144,4 @@ Merging Employee-1.xml and Employee.xml will yield Employees.xml with the conten
 
 ## Support:
 
-* Create an GitHub issue for any issues/requests.
+* Create a GitHub issue for any issues/requests.
