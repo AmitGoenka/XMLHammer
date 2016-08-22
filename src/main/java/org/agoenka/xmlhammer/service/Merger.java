@@ -42,6 +42,11 @@ public class Merger {
         Transformer.stream(getFilePath(outDir, pivotElementName), container);
     }
 
+    public static void merge(String inDir, String outDir, String fileNamePrefix, String pivotElementName, String outFileName, int start, int end) throws Exception {
+        Document container = merge(inDir, fileNamePrefix, pivotElementName, start, end);
+        Transformer.stream(getFilePath(outDir, outFileName), container);
+    }
+
     public static Document merge(String inDir, String fileNamePrefix, String pivotElementName, int start, int end) {
         int fileCount = fileCount(inDir, fileNamePrefix);
         validateNoFileFound(fileCount);
