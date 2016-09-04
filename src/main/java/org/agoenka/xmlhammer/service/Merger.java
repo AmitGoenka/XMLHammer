@@ -7,6 +7,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
@@ -69,9 +70,14 @@ public class Merger {
         final List<Document> documents = new ArrayList<>();
         if (validate(fileNamePrefix, start, end)) {
             IntStream.range(start, end + 1).forEachOrdered(i -> {
-                int index = i%limit != 0 ? i%limit : limit;
-                String fileName = getFilePath(srcDir, fileNamePrefix, index);
-                documents.add(load(fileName));
+                CompletableFuture.supplyAsync(
+                        () -> {
+                            int index = i % limit != 0 ? i % limit : limit;
+                            String fileName = getFilePath(srcDir, fileNamePrefix, index);
+                            documents.add(load(fileName));
+                            return documents;
+                        }
+                ).join();
             });
         }
         return documents;

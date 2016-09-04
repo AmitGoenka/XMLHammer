@@ -16,7 +16,13 @@ public class MergerTest {
         Splitter.init("src/test/resources/examples/", "in/", "out/");
         Splitter.split(fileName, parentElementName);
         Merger.init("src/test/resources/examples/", "out/", "in/");
-        Merger.merge("Employee", "Employees", 1, 2);
+        Merger.merge("Employee", parentElementName, 1, 2);
+    }
+
+    @Test
+    public void testMergeOutOfBounds() throws Exception {
+        Merger.init("src/test/resources/examples/", "out/", "in/");
+        Merger.merge("Employee", "Employees", 1, 1000);
     }
 
 }
