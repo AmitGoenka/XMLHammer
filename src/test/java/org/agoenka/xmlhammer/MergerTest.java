@@ -22,7 +22,7 @@ public class MergerTest {
     @Test
     public void testMergeOutOfBounds() throws Exception {
         Merger.init("src/test/resources/examples/", "out/", "in/");
-        Merger.merge("Employee", "Employees", 1, 10);
+        Merger.merge("Employee", "Employees", 1, 5);
     }
 
 }

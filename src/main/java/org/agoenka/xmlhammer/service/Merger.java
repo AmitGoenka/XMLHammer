@@ -100,4 +100,21 @@ public class Merger {
         });
     }
 
+    /*private static CompletableFuture<List<Document>> loadDocuments(final String srcDir, final String fileNamePrefix, int limit, final int start, final int end) {
+        return CompletableFuture.supplyAsync(() -> {
+            final List<Document> documents = new ArrayList<>();
+            if (validate(fileNamePrefix, start, end)) {
+                IntStream.range(start, end + 1).forEachOrdered(i -> CompletableFuture.runAsync(
+                        () -> {
+                            int index = i % limit != 0 ? i % limit : limit;
+                            String fileName = getFilePath(srcDir, fileNamePrefix, index);
+                            documents.add(load(fileName));
+                        }
+                        ).join()
+                );
+            }
+            return documents;
+        });
+    }*/
+
 }
